@@ -90,6 +90,32 @@
               "src/styles.css"
             ]
           }
+        },
+        "build:single-spa": {
+          "builder": "single-spa-angular:build",
+          "options": {
+            "outputPath": "dist/teste",
+            "main": "src/main.single-spa.ts",
+            "tsConfig": "tsconfig.app.json",
+            "polyfills": [
+              "zone.js"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ]
+          }
+        },
+        "serve:single-spa": {
+          "builder": "single-spa-angular:dev-server",
+          "options": {
+            "browserTarget": "teste:build:single-spa"
+          }
         }
       }
     }

@@ -27,6 +27,7 @@
     "@angular/core": "^20.1.0",
     "@angular/forms": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
+    "@angular/platform-browser-dynamic": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@babel/runtime": "^7.27.6",
     "@babel/runtime-corejs3": "^7.28.0",

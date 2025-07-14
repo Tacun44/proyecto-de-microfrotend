@@ -1,20 +1,22 @@
+import { enableProdMode, NgZone } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { singleSpaAngular, getSingleSpaExtraProviders } from 'single-spa-angular';
-import { AppComponent } from './app/app.component';
-import { provideRouter } from '@angular/router';
-import { routes } from './app/app.routes';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { NgZone } from '@angular/core';
+import { AppModule } from './app/app.module';
+// Si tienes environments, puedes importar así:
+// import { environment } from './environments/environment';
+
+// if (environment.production) {
+//   enableProdMode();
+// }
 
 const lifecycles = singleSpaAngular({
-  bootstrapFunction: () =>
-    bootstrapApplication(AppComponent, {
-      providers: [
-        provideRouter(routes),
-        ...getSingleSpaExtraProviders(),
-      ],
-    }),
+  bootstrapFunction: singleSpaProps => {
+    return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppModule);
+  },
   template: '<app-root />',
-  NgZone
+  NgZone: NgZone,
 });
 
-export const { bootstrap, mount, unmount } = lifecycles;
+export const bootstrap = lifecycles.bootstrap;
+export const mount = lifecycles.mount;
+export const unmount = lifecycles.unmount;
