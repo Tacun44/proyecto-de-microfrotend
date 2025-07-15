@@ -1,54 +1,44 @@
 {
-  "name": "teste",
+  "name": "erp360-payroll",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4200 --disable-host-check",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:single-spa": "ng build --configuration production --output-hashing=none",
-    "serve:single-spa": "ng serve --disable-host-check --port 4200"
-  },
-  "prettier": {
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
+    "build:single-spa:erp360-payroll": "ng build erp360-payroll --configuration production",
+    "serve:single-spa:erp360-payroll": "ng s --project erp360-payroll --disable-host-check --port 4002 --live-reload false"
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^20.1.0",
-    "@angular/compiler": "^20.1.0",
-    "@angular/core": "^20.1.0",
-    "@angular/forms": "^20.1.0",
-    "@angular/platform-browser": "^20.1.0",
-    "@angular/platform-browser-dynamic": "^20.1.0",
-    "@angular/router": "^20.1.0",
-    "@babel/runtime": "^7.27.6",
-    "@babel/runtime-corejs3": "^7.28.0",
+    "@angular/animations": "^18.2.0",
+    "@angular/common": "^18.2.0",
+    "@angular/compiler": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "@angular/forms": "^18.2.0",
+    "@angular/platform-browser": "^18.2.0",
+    "@angular/platform-browser-dynamic": "^18.2.0",
+    "@angular/router": "^18.2.0",
     "rxjs": "~7.8.0",
-    "single-spa": "^6.0.3",
+    "single-spa": ">=4.0.0",
     "single-spa-angular": "^9.2.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.14.10"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^20.0.0",
-    "@angular/build": "^20.1.0",
-    "@angular/cli": "^20.1.0",
-    "@angular/compiler-cli": "^20.1.0",
+    "@angular-builders/custom-webpack": "18.0.0",
+    "@angular-devkit/build-angular": "^18.2.11",
+    "@angular/cli": "^18.2.11",
+    "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.8.0",
+    "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "style-loader": "^3.3.1",
+    "typescript": "~5.5.2"
   }
 }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "teste": {
+    "erp360-payroll": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -12,13 +12,10 @@
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
-          "customWebpackConfig": {
-            "path": "webpack.config.js"
-          },
           "options": {
-            "outputPath": "dist/teste",
+            "outputPath": "dist/erp360-payroll",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "main": "src/main.single-spa.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -31,7 +28,14 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "extra-webpack.config.js",
+              "libraryName": "erp360-payroll",
+              "libraryTarget": "umd"
+            },
+            "deployUrl": "http://localhost:4002/"
           },
           "configurations": {
             "production": {
@@ -43,16 +47,17 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "outputHashing": "none"
             }
           },
           "defaultConfiguration": "production"
@@ -61,19 +66,20 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "teste:build:production"
+              "buildTarget": "erp360-payroll:build:production"
             },
             "development": {
-              "buildTarget": "teste:build:development"
+              "buildTarget": "erp360-payroll:build:development",
+              "port": 4002
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",
@@ -88,33 +94,8 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
-          }
-        },
-        "build:single-spa": {
-          "builder": "single-spa-angular:build",
-          "options": {
-            "outputPath": "dist/teste",
-            "main": "src/main.single-spa.ts",
-            "tsConfig": "tsconfig.app.json",
-            "polyfills": [
-              "zone.js"
             ],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css"
-            ]
-          }
-        },
-        "serve:single-spa": {
-          "builder": "single-spa-angular:dev-server",
-          "options": {
-            "browserTarget": "teste:build:single-spa"
+            "scripts": []
           }
         }
       }

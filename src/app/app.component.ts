@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { singleSpaPropsSubject } from '../single-spa/single-spa-props';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  template: `<h1>¡Hola Mundo desde el microfrontend Angular 20 (teste)!</h1>\n<router-outlet></router-outlet>`
+  imports: [RouterOutlet, CommonModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
-export class AppComponent {} 
+export class AppComponent {
+  title = 'app-home';
+  singleSpaProps$ = singleSpaPropsSubject.asObservable();
+}
